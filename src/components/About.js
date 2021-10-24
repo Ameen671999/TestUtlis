@@ -1,34 +1,12 @@
-import React, {useState} from "react";
-
-export default function About() {
+export default function About(props) {
   
-  const [myStyle, setMyStyle] = useState( 
-    {
-      color: "red",
-      backgroundColor: "black",
-      border: "1px solid white"
-    }
-  );
 
-  const [btnText, setBtnText] = useState("Enable dark mode")
-
-  const toggleStyle = () => {
-    if(myStyle.color === 'white') {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white",
-        border: "1px solid black"
-      });
-      setBtnText("Enable dark mode")
-    }else {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        border: "1px solid white"
-      })
-      setBtnText("Enable light mode")
-    }
+  let myStyle = {
+    color: props.mode === "dark" ? "white" : "#042743",
+    backgroundColor: props.mode === "dark" ? "black" : "white"
   }
+
+
   
   return (
     <>
@@ -46,7 +24,7 @@ export default function About() {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Accordion Item #1
+              Free to use
             </button>
           </h2>
           <div
@@ -77,7 +55,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              Accordion Item #2
+              Analyze your text
             </button>
           </h2>
           <div
@@ -108,7 +86,7 @@ export default function About() {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Accordion Item #3
+              Browser Compatible
             </button>
           </h2>
           <div
@@ -130,7 +108,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <button className="btn btn-primary my-3" onClick={toggleStyle} >{btnText}</button>
+    
     </>
   );
 }
